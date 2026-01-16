@@ -12,7 +12,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - name: Enable Pull Request Automerge
-          run: gh pr merge --merge --auto "1"
+          run: gh pr merge --merge --auto "3"
 
         - name: Echo message
           run: echo "Automerge successfully done."

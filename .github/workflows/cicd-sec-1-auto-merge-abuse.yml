@@ -11,23 +11,8 @@ jobs:
         if: github.event.label.name == 'automerge'
         runs-on: ubuntu-latest
         steps:
-        - name: Auto-approve and Merge
-          uses: actions/github-script@v6
-          with:
-            script: |
-                github.rest.pulls.createReview({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                pull_number: context.payload.pull_request.number,
-                event: 'APPROVE'
-                });
-
-                await github.rest.pulls.update({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                pull_number: context.payload.pull_request.number,
-                auto_merge_enabled: true
-                });
+        - name: Enable Pull Request Automerge
+          run: gh pr merge --merge --auto "1"
 
         - name: Echo message
           run: echo "Automerge successfully done."

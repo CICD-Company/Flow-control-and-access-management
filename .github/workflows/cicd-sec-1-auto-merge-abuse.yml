@@ -10,7 +10,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - name: Auto-approve and Merge
-          run: echo "Auto merge"
+          run: echo "Approved and merged successfully."
 
         - name: Echo message
           run: echo "Automerge successfully done."

@@ -10,15 +10,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - name: Auto-approve and Merge
-          uses: actions/github-script@v8
-          with:
-            script: |
-                github.rest.pulls.createReview({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                pull_number: context.payload.pull_request.number,
-                event: 'APPROVE'
-                })
+          run: echo "Auto merge"
 
         - name: Echo message
           run: echo "Automerge successfully done."

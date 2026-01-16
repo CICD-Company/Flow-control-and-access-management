@@ -1,0 +1,24 @@
+name: CICD-SEC-1 - Auto-merge abuse
+
+on:
+    pull_request:
+        types: [labeled]
+
+jobs:
+    automerge-and-run:
+        if: github.event.label.name == 'automerge'
+        runs-on: ubuntu-latest
+        steps:
+        - name: Auto-approve and Merge
+          uses: actions/github-script@v8
+          with:
+            script: |
+                github.rest.pulls.createReview({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.payload.pull_request.number,
+                event: 'APPROVE'
+                })
+
+        - name: Echo message
+          run: echo "Automerge successfully done."

@@ -20,7 +20,14 @@ jobs:
                 repo: context.repo.repo,
                 pull_number: context.payload.pull_request.number,
                 event: 'APPROVE'
-                })
+                });
+
+                await github.rest.pulls.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.payload.pull_request.number,
+                auto_merge_enabled: true
+                });
 
         - name: Echo message
           run: echo "Automerge successfully done."

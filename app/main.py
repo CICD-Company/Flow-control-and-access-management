@@ -7,6 +7,7 @@ def main():
 
     # Function of the shared library
     log("Calculator is started")
+    print("Auto merge is triggered!")
 
 
 if __name__ == "__main__":
